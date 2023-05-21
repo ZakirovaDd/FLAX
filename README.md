@@ -68,3 +68,7 @@ karyotype<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = 
 ```
 bedtools intersect -wb -a feile -b annotation_file.bed -f 0.5 > intersect_file.bed
 ```
+Получаем большой файл в котором нас интересуют только столбцы 1 (название хромомсомы), 4 (номер образца), 7(ген), 8(начало пересечения), 9 (конец пересечения), 13(имя)
+```
+CP027619.1	1435000	1440000	1	CP027619.1	phytozome10_0	gene	1434068	1444461	.	+	.	"ID=Lus10025751.g;Name=Lus10025751.g;"
+```
