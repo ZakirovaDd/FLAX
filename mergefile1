@@ -12,6 +12,6 @@ for file in my_list:
                      names=['chr', 'start', 'end', 'ALT'])
     result = result.append(df)
 x = result[result.ALT != '<DEL>'] #we get a file with duplications only
-# x = y[y.chr == 'CP027633.1'] # if you need information only on a specific chromosome
+# x = x[x.chr == 'CP027633.1'] # if you need information only on a specific chromosome
 x['diff'] = x['end'] - x['start'] #counting the length of the duplication
-x.to_csv(r'C:\Users\Сергей\Desktop\***\duplicationfile.bed', index=False, header=False, sep='\t')
+x.to_csv(r'C:\Users\Username\Desktop\***\duplicationfile.bed', index=False, header=False, sep='\t')
