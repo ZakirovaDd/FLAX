@@ -1,0 +1,21 @@
+import pandas as pd
+
+import glob
+
+# names = glob.glob(r'C:\Users\Username\Desktop\***\***.bed', recursive=True)
+
+my_list = []
+my_list.extend(glob.glob(r'C:\Users\Сергей\Desktop\test\***.bed'))
+
+
+result = pd.DataFrame()
+for file in my_list:
+    df = pd.read_csv(file, sep='\t',
+                     names=['chr', 'start', 'end', 'ALT'])
+    result = result.append(df)
+
+# totaldata = pd.concat(cont)
+x = result[result.ALT != '<DUP>']
+x['overlap'] = x.groupby(['chr','start', 'end']).cumcount() + 1
+a = x.groupby(['chr','start', 'end']).max().reset_index()
+a.to_csv(r'C:\Users\Username\Desktop\foldername\Overlapfile-deletions.bed', index=False, header=False, sep='\t')
