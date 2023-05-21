@@ -9,7 +9,7 @@ cont = []
 for i in range(len(names)):
     df = pd.read_csv(names[i],  sep='\t',
      names = ['chr', 'start', 'end', 'ALT']) # names[i]
-    df['user_id'] = i+1
+    df['id'] = i+1
     cont.append(df)
 
 # объединить все датафреймы
