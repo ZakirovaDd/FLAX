@@ -40,3 +40,5 @@ ggplot(m, aes(x = len, group = V1)) + geom_line(stat = "density", aes(color = ch
 2166  CP027633.1  21723000  21727000  <DEL>       99
 2167  CP027633.1  21745000  21752000  <DEL>       99
 ```
+4. Составление хромосомных карт. Поиск вариантов, затронутых делециями и дупликациями общих для всех образцов
+Для составления хромососмных карт была использована библиотека RIdeogram (https://cran.r-project.org/web/packages/RIdeogram/RIdeogram.pdf)
