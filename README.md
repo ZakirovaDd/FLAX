@@ -16,7 +16,8 @@ done
 
 2.	Плотность распределения длин вариантов (делеций и дупликаций)
 Полученные файлы собираем в один и фильруем по нужным параметрам, в нашем случае по делеции/дупликации, также можно отфильровать по отдельной хромосоме
-Файл с кодом - *mergefile1*
+Файл с кодом - *mergefile1* (https://github.com/ZakirovaDd/FLAX/blob/main/mergefile1)
+
 Пример выходных данных:
 ```
              chr     start       end   diff
@@ -33,7 +34,8 @@ ggplot(file, aes(x = diff, group = chr)) + geom_line(stat = "density", aes(color
 ```
 3. Построение графиков boxplot 
 Аналогично с шагом 2, только в шаге 1 не учтен порядковый номер образца.
-Для получения файла с пронумерованными образцами используем следующий код: boxplot1
+Для получения файла с пронумерованными образцами используем следующий код: *boxplot1* (https://github.com/ZakirovaDd/FLAX/blob/main/boxplot1)
+
 На выходе получаем: 
 ```
     chr     start       end    ALT     id
@@ -47,7 +49,9 @@ ggplot(file, aes(x = diff, group = chr)) + geom_line(stat = "density", aes(color
 4. Составление хромосомных карт. Поиск вариантов, затронутых делециями и дупликациями общих для всех образцов
 4.1. Для составления хромососмных карт была использована библиотека RIdeogram (https://cran.r-project.org/web/packages/RIdeogram/RIdeogram.pdf)
 Предварительно необходимо подготовить файлы, а именно указать количество совпадений, учитывая совпадение по началу и концу дупликации/делеции
-Файл с кодом - *Overlap1*
+Файл с кодом - *Overlap1* (https://github.com/ZakirovaDd/FLAX/blob/main/Overlap)
+[Overlap1](https://github.com/ZakirovaDd/FLAX/blob/main/Overlap)
+
 4.2. Работа с библиотекой RIdeogram:
 
 ```
