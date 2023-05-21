@@ -16,7 +16,7 @@ done
 
 2.	Плотность распределения длин вариантов (делеций и дупликаций)
 Полученные файлы собираем в один и фильруем по нужным параметрам, в нашем случае по делеции/дупликации, также можно отфильровать по отдельной хромосоме
-Файл с кодом - *mergefile1* (https://github.com/ZakirovaDd/FLAX/blob/main/mergefile1)
+Файл с кодом - [mergefile1](https://github.com/ZakirovaDd/FLAX/blob/main/mergefile1)
 
 Пример выходных данных:
 ```
@@ -34,7 +34,7 @@ ggplot(file, aes(x = diff, group = chr)) + geom_line(stat = "density", aes(color
 ```
 3. Построение графиков boxplot 
 Аналогично с шагом 2, только в шаге 1 не учтен порядковый номер образца.
-Для получения файла с пронумерованными образцами используем следующий код: *boxplot1* (https://github.com/ZakirovaDd/FLAX/blob/main/boxplot1)
+Для получения файла с пронумерованными образцами используем следующий код: [boxplot1](https://github.com/ZakirovaDd/FLAX/blob/main/boxplot1)
 
 На выходе получаем: 
 ```
@@ -49,8 +49,7 @@ ggplot(file, aes(x = diff, group = chr)) + geom_line(stat = "density", aes(color
 4. Составление хромосомных карт. Поиск вариантов, затронутых делециями и дупликациями общих для всех образцов
 4.1. Для составления хромососмных карт была использована библиотека RIdeogram (https://cran.r-project.org/web/packages/RIdeogram/RIdeogram.pdf)
 Предварительно необходимо подготовить файлы, а именно указать количество совпадений, учитывая совпадение по началу и концу дупликации/делеции
-Файл с кодом - *Overlap1* (https://github.com/ZakirovaDd/FLAX/blob/main/Overlap)
-[Overlap1](https://github.com/ZakirovaDd/FLAX/blob/main/Overlap)
+Файл с кодом - [Overlap1](https://github.com/ZakirovaDd/FLAX/blob/main/Overlap)
 
 4.2. Работа с библиотекой RIdeogram:
 
@@ -77,4 +76,4 @@ bedtools intersect -wb -a feile -b annotation_file.bed -f 0.5 > intersect_file.b
 CP027619.1	1435000	1440000	1	CP027619.1	phytozome10_0	gene	1434068	1444461	.	+	.	"ID=Lus10025751.g;Name=Lus10025751.g;"
 ```
 Далее необходимо оставить только нужные столбцы, а так же получить списки гены, которые пересекаются со всеми del или dup, во втором только те del/dup, которые встречаются более чем в 2/3 образцов
-Файл с кодом: *Go enrichment* (https://github.com/ZakirovaDd/FLAX/blob/main/Go%20enrichment)
+Файл с кодом: [Go enrichment](https://github.com/ZakirovaDd/FLAX/blob/main/Go%20enrichment)  
