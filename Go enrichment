@@ -1,19 +1,19 @@
 import pandas as pd
 
-file = r'C:\Users\Username\Desktop\foldername\intersectfile-deletion.bed'
+file = r'C:\Users\Сергей\Desktop\Flax\annotate\01\intersect-DEL-fin.bed'
 df = pd.read_csv(file, sep='\t',
                  names=['chr1', 'start1', 'end1', 'num', 'chr2', 'phy', 'gene', 'start2', 'end2', 'point', 'strand',
                         'point2',
                         'parent'])
 
-x = df[df.gene == 'gene']
+x = df[df.gene == 'gene'] # сортруем только по генам
 new_df=x.drop(['chr2','chr1','phy','start2','end2','point','point2','strand', 'gene' ], axis=1)
-new_column = m["parent"].str.split(";", n = 1, expand = True
+new_column = new_df["parent"].str.split(";", n = 1, expand = True)
 
-m["ID"]= new_column[0]
-m["Name"]= new_column[1]
-m.drop(columns =["parent"], inplace = True)
-s= m.drop('ID', axis=1)
+new_df["ID"]= new_column[0]
+new_df["Name"]= new_column[1]
+new_df.drop(columns =["parent"], inplace = True)
+s= new_df.drop('ID', axis=1)
 s['Name'] = s['Name'].str.replace('Name=','')
 s['Name'] = s['Name'].str.replace(';','')
 
@@ -27,6 +27,6 @@ l = a.groupby(['Name']).max().reset_index()
 n = l.drop('REP',axis=1)
 #более чем в 2/3 образцов
 y = l[l.REP >= 66]
-
+y = y.drop('REP',axis=1)
 #n.to_csv(r'C:\Users\Username\Desktop\Flax\foldername\deletion-repeat-all.bed', index=False, header=False, sep='\t')
 #y.to_csv(r'C:\Users\Username\Desktop\Flax\foldername\deletion-repeat-66.bed', index=False, header=False, sep='\t')
