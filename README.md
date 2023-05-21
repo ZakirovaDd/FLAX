@@ -27,7 +27,7 @@ done
 2132  CP027633.1  17538000  17551000  13000
 2133  CP027633.1  17587000  17601000  14000
 ```
-Используя этот файл строим графики распределения плотности по хромомсомам в Rsudio:
+Используя этот файл строим графики распределения плотности по хромомсомам в Rstudio:
 
 ```
 ggplot(file, aes(x = diff, group = chr)) + geom_line(stat = "density", aes(color = chromosome)) + theme_light() + labs(title ="Deletion",x="length", y="Density")+ coord_cartesian(xlim = c(0, 100000)) + scale_y_continuous(labels = scales::comma) + scale_x_continuous(limits = c(0, NA)) 
