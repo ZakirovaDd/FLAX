@@ -73,4 +73,4 @@ bedtools intersect -wb -a feile -b annotation_file.bed -f 0.5 > intersect_file.b
 CP027619.1	1435000	1440000	1	CP027619.1	phytozome10_0	gene	1434068	1444461	.	+	.	"ID=Lus10025751.g;Name=Lus10025751.g;"
 ```
 Далее необходимо оставить только нужные столбцы, а так же получить списки гены, которые пересекаются со всеми del или dup, во втором только те del/dup, которые встречаются более чем в 2/3 образцов
-Файл с кодом: Go enrichment [r2h]:https://github.com/ZakirovaDd/FLAX/blob/main/Go%20enrichment
+Файл с кодом: Go enrichment [a relative link]:https://github.com/ZakirovaDd/FLAX/blob/main/Go%20enrichment
