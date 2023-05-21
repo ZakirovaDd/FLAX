@@ -63,3 +63,8 @@ karyotype<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = 
 ```
  overlaid<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3),Value = c(overlapfile$V4))
 ```
+5. GO enrichment 
+Подготовка файдов: Используем файл полученный на этапе  3, дополнительно используем bedtools
+```
+bedtools intersect-f 0.5
+```
