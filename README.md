@@ -66,5 +66,5 @@ karyotype<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = 
 5. GO enrichment 
 Подготовка файдов: Используем файл полученный на этапе  3, дополнительно используем bedtools
 ```
-bedtools intersect-f 0.5
+bedtools intersect -wb -a feile -b annotation_file.bed -f 0.5 > intersect_file.bed
 ```
