@@ -1,0 +1,20 @@
+import pandas as pd
+
+import glob
+
+names = glob.glob(r'C:\Users\Username\Desktop\***\***.bed', recursive=True) # specify the path to the folder with all files
+
+cont = []
+
+for i in range(len(names)):
+    df = pd.read_csv(names[i],  sep='\t',
+     names = ['chr', 'start', 'end', 'ALT']) # names[i]
+    df['user_id'] = i+1
+    cont.append(df)
+
+# объединить все датафреймы
+totaldata = pd.concat(cont)
+print(totaldata)
+y = totaldata[totaldata.ALT != '<DEL>']
+y['diff'] = y['end'] - y['start']
+y.to_csv(r'C:\Users\Username\Desktop\foldername\boxplot-dup-file.bed', index=False, header=False, sep='\t')
