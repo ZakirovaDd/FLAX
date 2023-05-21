@@ -1,0 +1,32 @@
+import pandas as pd
+
+file = r'C:\Users\Username\Desktop\foldername\intersectfile-deletion.bed'
+df = pd.read_csv(file, sep='\t',
+                 names=['chr1', 'start1', 'end1', 'num', 'chr2', 'phy', 'gene', 'start2', 'end2', 'point', 'strand',
+                        'point2',
+                        'parent'])
+
+x = df[df.gene == 'gene']
+new_df=x.drop(['chr2','chr1','phy','start2','end2','point','point2','strand', 'gene' ], axis=1)
+new_column = m["parent"].str.split(";", n = 1, expand = True
+
+m["ID"]= new_column[0]
+m["Name"]= new_column[1]
+m.drop(columns =["parent"], inplace = True)
+s= m.drop('ID', axis=1)
+s['Name'] = s['Name'].str.replace('Name=','')
+s['Name'] = s['Name'].str.replace(';','')
+
+b=s.drop(['start1','end1'], axis=1)
+a = b.groupby(['num','Name']).max().reset_index()
+
+a=a.drop('num',axis=1)
+a['REP'] = a.groupby(['Name']).cumcount() + 1
+l = a.groupby(['Name']).max().reset_index()
+#все пересечения
+n = l.drop('REP',axis=1)
+#более чем в 2/3 образцов
+y = l[l.REP >= 66]
+
+#n.to_csv(r'C:\Users\Username\Desktop\Flax\foldername\deletion-repeat-all.bed', index=False, header=False, sep='\t')
+#y.to_csv(r'C:\Users\Username\Desktop\Flax\foldername\deletion-repeat-66.bed', index=False, header=False, sep='\t')
