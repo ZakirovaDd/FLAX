@@ -17,10 +17,19 @@ done
 2.	Плотность распределения длин вариантов (делеций и дупликаций)
 Полученные файлы собираем в один и фильруем по нужным параметрам, в нашем случае по делеции/дупликации, также можно отфильровать по отдельной хромосоме
 Файл с кодом - mergefile1
+Пример выходных данных:
+```
+             chr     start       end   diff
+19    CP027619.1   5344000   5350000   6000
+22    CP027619.1   5548000   5568000  20000
+...          ...       ...       ...    ...
+2132  CP027633.1  17538000  17551000  13000
+2133  CP027633.1  17587000  17601000  14000
+```
 Используя этот файл строим графики распределения плотности по хромомсомам в Rsudio:
 
 ```
-ggplot(m, aes(x = len, group = V1)) + geom_line(stat = "density", aes(color = chromosome)) + theme_light() + labs(title ="Deletion",x="length", y="Density")+ coord_cartesian(xlim = c(0, 100000)) + scale_y_continuous(labels = scales::comma) + scale_x_continuous(limits = c(0, NA)) 
+ggplot(file, aes(x = diff, group = chr)) + geom_line(stat = "density", aes(color = chromosome)) + theme_light() + labs(title ="Deletion",x="length", y="Density")+ coord_cartesian(xlim = c(0, 100000)) + scale_y_continuous(labels = scales::comma) + scale_x_continuous(limits = c(0, NA)) 
 ```
 3. Построение графиков boxplot 
 Аналогично с шагом 2, только в шаге 1 не учтен порядковый номер образца.
@@ -31,16 +40,26 @@ ggplot(m, aes(x = len, group = V1)) + geom_line(stat = "density", aes(color = ch
 0     CP027619.1    211000    216000  <DEL>        1
 1     CP027619.1    324000    337000  <DEL>        1
 2     CP027619.1    632000    637000  <DEL>        1
-3     CP027619.1   1149000   1158000  <DEL>        1
-4     CP027619.1   1166000   1182000  <DEL>        1
 ...          ...       ...       ...    ...      ...
-2163  CP027633.1  21607000  21637000  <DEL>       99
-2164  CP027633.1  21642000  21646000  <DEL>       99
-2165  CP027633.1  21685000  21689000  <DEL>       99
 2166  CP027633.1  21723000  21727000  <DEL>       99
 2167  CP027633.1  21745000  21752000  <DEL>       99
 ```
 4. Составление хромосомных карт. Поиск вариантов, затронутых делециями и дупликациями общих для всех образцов
-Для составления хромососмных карт была использована библиотека RIdeogram (https://cran.r-project.org/web/packages/RIdeogram/RIdeogram.pdf)
+4.1. Для составления хромососмных карт была использована библиотека RIdeogram (https://cran.r-project.org/web/packages/RIdeogram/RIdeogram.pdf)
 Предварительно необходимо подготовить файлы, а именно указать количество совпадений, учитывая совпадение по началу и концу дупликации/делеции
 Файл с кодом - Overlap1
+4.2. Работа с библиотекой RIdeogram:
+
+```
+library("RIdeogram")
+ideogram(karyotype = karyotype, overlaid = overlaid)
+```
+Необходимо правильно назвать все столбцы для успешного запуска кода
+для karyotype:
+```
+karyotype<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3))
+```
+ДЛЯ overlaid:
+```
+ overlaid<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3),Value = c(overlapfile$V4))
+```
