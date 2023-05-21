@@ -77,3 +77,5 @@ CP027619.1	1435000	1440000	1	CP027619.1	phytozome10_0	gene	1434068	1444461	.	+	.
 ```
 Далее необходимо оставить только нужные столбцы, а так же получить списки гены, которые пересекаются со всеми del или dup, во втором только те del/dup, которые встречаются более чем в 2/3 образцов
 Файл с кодом: [Go enrichment](https://github.com/ZakirovaDd/FLAX/blob/main/Go%20enrichment)  
+
+Для анализа обогащенности использовалась библиотека [xEnricherYours](https://www.rdocumentation.org/packages/XGR/versions/1.1.7/topics/xEnricherYours)
