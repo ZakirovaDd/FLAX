@@ -60,11 +60,11 @@ ideogram(karyotype = karyotype, overlaid = overlaid)
 Необходимо правильно назвать все столбцы для успешного запуска кода
 для karyotype:
 ```
-karyotype<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3))
+karyotype<-data.frame(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3))
 ```
 ДЛЯ overlaid:
 ```
- overlaid<-overlapfile(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3),Value = c(overlapfile$V4))
+ overlaid<-data.frame(Chr = c(overlapfile$V1), Start = c(overlapfile$V2),End = c(overlapfile$V3),Value = c(overlapfile$V4))
 ```
 5. GO enrichment 
 Подготовка файдов: Используем файл полученный на этапе  3, дополнительно используем bedtools
